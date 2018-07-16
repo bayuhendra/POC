@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class mutable="true" name="com.agit.crm.domain.customer.feedback.ResultAnswer" table="MST_RESULT_ANSWER">
+        <!--<cache usage="read-only"/>-->
+        <id column="id" name="id">
+            <generator class="org.hibernate.id.IdentityGenerator"/>
+        </id>
+        <property column="ResultAnswerID" name="ResultAnswerID" not-null="false"/>
+        <property column="userID" name="userID" not-null="false"/>
+        <property column="answerID" name="answerID" not-null="false"/>
+        <property column="chooseAnswer" name="chooseAnswer" not-null="false"/>
+        <property column="touchpoints" name="touchpoints" not-null="false">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.agit.crm.shared.type.TypeTouchpoints</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>

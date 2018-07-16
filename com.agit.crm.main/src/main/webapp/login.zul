@@ -1,0 +1,82 @@
+<?page id="index" title="FWD Asuransi Hidup"?>
+<?link rel="icon" type="image/png" href="/images/lowongan-kerja-pt-fwd-life-indonesia.jpg"?>
+<?taglib uri="/WEB-INF/security.tld" prefix="sec"?>
+<zk xmlns:w="client" xmlns:n="native">
+    <window width="400px" position="center" mode="overlapped" style="background-color: yellow"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.LoginVM')">
+        <h:form id="f" name="f" action="/crm/processLogin" method="POST" xmlns:h="native">
+            <style>
+                body { background-color: #022c2f }
+            </style>
+            <groupbox mold="3d">
+                <vbox width="100%" height="100%" align="center">
+                    <image src="/images/lowongan-kerja-pt-fwd-life-indonesia.jpg"/>
+                    <separator></separator>
+                    <separator></separator>
+                    <separator></separator>
+                    <label sclass="isi" style="font-weight:bold;color:#022c2f;font-size:20px;" value="Log in to your account"></label>
+                </vbox>
+                <style>
+                    .z-separator-hor-bar {
+                    background: black;	
+                    height: 5px;		
+                    }
+                </style>
+                <div class="modal-footer" align="center">
+                </div>
+                <grid style="border:none;">
+                    <columns>
+                        <column width="30%"/>
+                        <column width="70%"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label sclass="isi" style="font-weight:bold;color:black;font-size:12px" value="Username" />
+                            <textbox class="form-control"  name="username" width="100%" placeholder="username"/>
+                        </row>
+                    </rows>
+                </grid>
+                <grid style="border:none;">
+                    <columns>
+                        <column width="30%"/>
+                        <column width="70%"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label sclass="isi" style="font-weight:bold;color:black;font-size:12px" value="Password"/>
+                            <textbox class="form-control" type="password" name="password" width="100%" placeholder="Password"/>
+                        </row>
+                        <row visible="false">
+                            <label sclass="isi" value="${domain}" style="font-weight:bold;color:black" />
+                            <listbox name="ldapDomain" model="@load(vm.domains)" mold="select" width="150px">
+                                <template name="model" status="s">  
+                                    <listitem label="@load(each.key)" value="@load(each.value)" selected="@load(s.index eq 0)"/>
+                                </template>
+                            </listbox>
+                        </row>
+                    </rows>
+                </grid>
+                <div class="modal-footer">
+                </div>
+                <!--<separator spacing="20px" bar="true"/>-->
+                <div class="btn-group btn-group-justified">
+                    <hbox align="center">
+                        <space width="195px"/>
+                        <vbox>
+                            <button label="Register" style="background-color: #022c2f;color:white" width="90px"/>
+                        </vbox>
+                        <vbox>
+                            <button type="submit" label="Login" style="background-color: #022c2f;color:white" width="90px"/>
+                        </vbox>
+                    </hbox>
+                </div>
+            </groupbox>
+        </h:form>
+        <!-- this form-login-page form is also used as the form-error-page to ask for a login again. -->
+        <html style="color:red; font-size: 12px;" if="${not empty param['login_error']}">
+        <![CDATA[ <p style="text-align:center;">${SPRING_SECURITY_LAST_EXCEPTION.message}</p> ]]>
+        </html>
+    </window>
+</zk>
+

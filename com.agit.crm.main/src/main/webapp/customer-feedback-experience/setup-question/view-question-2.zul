@@ -1,0 +1,43 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback2')"
+            width="50%" height="70%"
+            closable="true" sizable="true"
+            title="Feedback">
+        <separator></separator>
+        <label style="color:#022c2f;font-size:15px;font-weight: bold;align:center" value="Survei Kepuasan Pelanggan"/>
+        <separator></separator>
+        <div height="5px" />
+        <listbox rows="1" mold="paging" pageSize="1" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerType2DTOs)">
+            <listhead>
+                <listheader label="" width="100%" align="left"/>
+            </listhead>
+            <template name="model">
+                <listitem value="${each}">
+                    <listcell>
+                        <label width="100%" value="@bind(each.chooseQuestion)" style="color:#022c2f;font-size:12px;font-weight: bold;align:center"/>
+                        <separator bar="true" />
+                        <radiogroup id="@bind(each.answerID)" selectedItem="@bind(fx.chooseAnswer)">
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer1)" label="@bind(each.chooseAnswer1)" value="100"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer2)" label="@bind(each.chooseAnswer2)" value="80"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer3)" label="@bind(each.chooseAnswer3)" value="60"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer4)" label="@bind(each.chooseAnswer4)" value="40"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer5)" label="@bind(each.chooseAnswer5)" value="20"/>
+                        </radiogroup>
+                    </listcell>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        <div class="modal-footer">
+            <button style="background-color: #022c2f;color:white" label="Save" onClick="@command('buttonSaveFeedback2')" />
+        </div>
+    </window>
+
+</zk>

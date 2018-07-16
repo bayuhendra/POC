@@ -1,0 +1,97 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.questionDTO) @save(vm.questionDTO, before='buttonSaveQuestion')"
+            width="50%" height="60%"
+            closable="true" sizable="true" title="Tambah Pertanyaan">
+        
+        <!-- Modal content-->
+        <div>
+            <div class="modal-body">
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="15%"></column>
+                            <column width="30%"></column>
+                            <column width="20%"></column>
+                            <column width="35%"></column>
+                        </columns>
+                        <rows>
+                            <row visible="false">  
+                                <n:h5 class="modal-title"> ID</n:h5>
+                                <textbox class="form-control" width="100px" disabled="true" value="@bind(fx.questionID)"/>    
+                            </row>
+                            <row> 
+                                <n:h5 class="modal-title"> Kategori</n:h5>
+                                <combobox width="100%" style="font-size:12px" height="25px" placeholder="-Pilih Jenis TouchPoints-" readonly="true" model="@load(vm.touchpointses)" selectedItem="@bind(fx.touchpoints)">
+                                    <template name="model" var="items">
+                                        <comboitem label="@load(items)" value="@load(items)"/>
+                                    </template>
+                                </combobox>
+                            </row>
+                            <row>
+                                <n:h5 class="modal-title"> Status</n:h5>
+                                <combobox width="100%" style="font-size:12px" height="25px" placeholder="-Pilih Jenis Status" readonly="true" model="@load(vm.statuses)" selectedItem="@bind(fx.status)"> 
+                                    <template name="model" var="items">
+                                        <comboitem label="@load(items)" value="@load(items)"/>
+                                    </template>
+                                </combobox> 
+                            </row>
+                
+                        </rows>
+                       
+                    </grid>
+                </groupbox>
+                <separator> </separator>
+                   <separator> </separator>
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="15%"></column>
+                            <column width="65%"></column>
+                            <column width="20%"></column>
+                        </columns>
+                        <rows>
+                            <row>
+                                <n:h5 class="modal-title"> Pertanyaan</n:h5>
+                                <textbox class="form-control" width="100%" value="@bind(fx.question)" rows="3"/>  
+                            </row>
+                
+                        </rows>
+                       
+                    </grid>
+                </groupbox>
+                <separator/>
+                
+<!--                <groupbox>
+                    <button label="Create" style="background-color: #022c2f;color:white" onClick="@command('buttonAddAnswer')"/>
+                    <separator/>
+                
+                    <listbox rows="5" mold="paging" pageSize="4" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerDTOs)">
+                        <listhead>
+                            <listheader label="Answer" width="75%" align="center"/>
+                            <listheader label="Action" width="25%" align="center"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem value="${each}">
+                                <listcell>
+                                    <label width="100%" value="@bind(each.answer)"/>
+                                </listcell>
+                                <listcell >
+                                    <a onClick="@command('detail', object=each)" image="/images/skk_edit.png" sclass="btn btn-default"/>
+                                    <a onClick="@command('delete', object=each)" image="/images/clear_x.png" sclass="btn btn-default"/>
+                                </listcell>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </groupbox>-->
+                
+                <div class="modal-footer">
+                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
+                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSaveQuestion')" />
+                </div>
+            </div>
+        
+        </div>
+    </window>
+</zk>

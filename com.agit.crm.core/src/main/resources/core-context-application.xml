@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    
+    <bean id="questionDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.QuestionDTOAssembler"/>
+    <bean id="questionService" class="com.agit.crm.application.impl.QuestionServiceImpl">
+        <property name="questionRepository" ref="questionRepository"/>
+        <property name="questionDTOAssembler" ref="questionDTOAssembler"/>
+    </bean>
+    
+    <bean id="answerDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.AnswerDTOAssembler">
+        <property name="resultAnswerDTOAssembler" ref="resultAnswerDTOAssembler"/>
+    </bean>
+    <bean id="answerService" class="com.agit.crm.application.impl.AnswerServiceImpl">
+        <property name="answerRepository" ref="answerRepository"/>
+        <property name="answerDTOAssembler" ref="answerDTOAssembler"/>
+    </bean>
+    <bean id="resultAnswerDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.ResultAnswerDTOAssembler" />
+    <bean id="resultAnswerService" class="com.agit.crm.application.impl.ResultAnswerServiceImpl">
+        <property name="resultAnswerRepository" ref="resultAnswerRepository"/>
+        <property name="resultAnswerDTOAssembler" ref="resultAnswerDTOAssembler"/>
+    </bean>
+</beans>
