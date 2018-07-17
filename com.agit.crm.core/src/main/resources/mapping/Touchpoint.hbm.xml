@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class mutable="true" name="com.agit.crm.domain.customer.touchpoint.Touchpoint" table="FWD_MST_TOUCHPOINT">
+        <!--<cache usage="read-only"/>-->
+        <id column="id" name="id">
+            <generator class="org.hibernate.id.IdentityGenerator"/>
+        </id>
+        <property column="touchpointID" name="touchpointID" not-null="true"/>
+        <property column="touchpoint" name="touchpoint" not-null="false"/>
+        <property column="deskripsi" name="deskripsi" not-null="false"/>
+        <property column="url" name="url" not-null="false"/>
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
+    </class>
+</hibernate-mapping>

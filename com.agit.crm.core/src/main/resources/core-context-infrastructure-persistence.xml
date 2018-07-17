@@ -19,4 +19,16 @@
     <bean id="resultAnswerRepository" class="com.agit.crm.domain.infrastructure.persistance.hibernate.ResultAnswerHibernateRepository">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="pertanyaanRepository" class="com.agit.crm.domain.infrastructure.persistance.hibernate.PertanyaanHibernateRepository">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="pertanyaanOpsiRepository" class="com.agit.crm.domain.infrastructure.persistance.hibernate.PertanyaanOpsiHibernateRepository">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="pertanyaanHasilRepository" class="com.agit.crm.domain.infrastructure.persistance.hibernate.PertanyaanHasilHibernateRepository">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="touchpointRepository" class="com.agit.crm.domain.infrastructure.persistance.hibernate.TouchpointHibernateRepository">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>

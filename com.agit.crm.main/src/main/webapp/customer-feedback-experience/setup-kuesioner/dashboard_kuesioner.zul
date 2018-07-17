@@ -1,0 +1,48 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
+            form="@id('fx') @load(vm.pertanyaanDTO) @save(vm.pertanyaanDTO, before='buttonSavePertanyaan')">
+        <separator height="5px"/>
+        <div align="left" class="bs-example">
+            <div class="col-lg-6">
+                <div class="input-group" >
+                    <textbox class="form-control" placeholder="Masukkan Parameter" />
+                    <span class="input-group-btn">
+                        <button style="background-color: #022c2f;color:white">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <button label="Tambah Pertanyaan" style="background-color: #022c2f;color:white" onClick="@command('buttonTambahPertanyaan')"/>
+            <space width="5px"/>
+        </div>
+        <separator width="30px"/>
+        <listbox mold="paging" pageSize="10" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.pertanyaanDTOs)">
+            <listhead>
+                <listheader label="Code" width="10%" align="center"/>
+                <listheader label="Touchpoints" width="15%" align="center"/>
+                <listheader label="Nama Pertanyaan" width="60%" align="center"/>
+                <listheader label="Aksi" width="15%" align="center"/>
+            </listhead>
+            <template name="model">
+                <listitem value="${each}">
+                    <listcell>
+                        <label width="100%" value="@bind(each.pertanyaanID)"/>
+                    </listcell>
+                    <listcell>
+                        <label width="100%" value="@bind(each.touchpoint)"/>
+                    </listcell>
+                    <listcell>
+                        <label width="100%" value="@bind(each.pertanyaan)"/>
+                    </listcell>
+                    <listcell >
+                        <a onClick="@command('ubahPertanyaan', object=each)" image="/images/skk_edit.png" sclass="btn btn-default"/>
+                        <a onClick="@command('deletePertanyaan', object=each)" image="/images/clear_x.png" sclass="btn btn-default"/>
+                        <a onClick="@command('detailPertanyaan', object=each)" image="/images/skk_finish.png" sclass="btn btn-default"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>

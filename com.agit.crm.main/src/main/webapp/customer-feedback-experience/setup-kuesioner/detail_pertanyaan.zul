@@ -1,0 +1,69 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
+            form="@id('fx') @load(vm.pertanyaanDTO) @save(vm.pertanyaanDTO, before='buttonSavePertanyaan')"
+            width="60%" height="80%"
+            closable="true" sizable="true" title="Tambah Pertanyaan">
+        
+        <!-- Modal content-->
+        <div>
+            <div class="modal-body">
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="20%"></column>
+                            <column width="80%"></column>
+                        </columns>
+                        <rows>
+                            <row>  
+                                <n:h5 class="modal-title"> ID Pertanyaan</n:h5>
+                                <textbox class="form-control" width="100%" readonly="true" value="@bind(vm.namaPertanyaan)"/>    
+                            </row>
+                            <row> 
+                                <n:h5 class="modal-title"> Touchpoint</n:h5>
+                                <textbox class="form-control" width="100%" readonly="true" value="@bind(vm.touchpoint)"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+                <separator> </separator>
+                <groupbox>
+                    <button label="Tambah Data" style="background-color: #022c2f;color:white" onClick="@command('buttonAddRowOpsi')"/>
+                    <separator> </separator>
+                    <listbox mold="paging" pageSize="10" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.pertanyaanOpsiDTOs)">
+                        <listhead>
+                            <listheader label="ID" width="15%" align="center"/>
+                            <listheader label="Nama Opsi" width="50%" align="center"/>
+                            <listheader label="Value" width="10%" align="center"/>
+                            <listheader label="Aksi" width="25%" align="center"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem value="${each}">
+                                <listcell>
+                                    <label width="100%" value="@bind(each.pertanyaanOpsiID)"/>
+                                </listcell>
+                                <listcell>
+                                    <textbox width="100%" value="@bind(each.opsi)"/>
+                                </listcell>
+                                <listcell>
+                                    <doublebox width="100%" value="@bind(each.value)"/>
+                                </listcell>
+                                <listcell >
+                                    <a onClick="@command('ubahOpsi', object=each)" image="/images/skk_edit.png" sclass="btn btn-default"/>
+                                    <a onClick="@command('deleteOpsi', object=each)" image="/images/clear_x.png" sclass="btn btn-default"/>
+                                </listcell>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </groupbox>
+                <separator/>
+                
+                <div class="modal-footer">
+                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
+                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSavePertanyaanOpsi')" />
+                </div>
+            </div>
+        
+        </div>
+    </window>
+</zk>

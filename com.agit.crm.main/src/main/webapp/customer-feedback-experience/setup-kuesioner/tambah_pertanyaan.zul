@@ -1,0 +1,67 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
+            form="@id('fx') @load(vm.pertanyaanDTO) @save(vm.pertanyaanDTO, before='buttonSavePertanyaan')"
+            width="50%" height="60%"
+            closable="true" sizable="true" title="Tambah Pertanyaan">
+        
+        <!-- Modal content-->
+        <div>
+            <div class="modal-body">
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="15%"></column>
+                            <column width="85%"></column>
+                        </columns>
+                        <rows>
+                            <row visible="false">  
+                                <n:h5 class="modal-title"> ID Pertanyaan</n:h5>
+                                <textbox class="form-control" width="100px" readonly="true" value="@bind(fx.pertanyaanID)"/>    
+                            </row>
+                            <row> 
+                                <n:h5 class="modal-title"> Touchpoint</n:h5>
+                                <combobox width="70%" style="font-size:12px" height="25px" placeholder="-Pilih TouchPoint-" readonly="true" model="@load(vm.listTouchpoint)" selectedItem="@bind(vm.touchpoint)">
+                                    <template name="model" var="items">
+                                        <comboitem label="@load(items)" value="@load(items)"/>
+                                    </template>
+                                </combobox>
+                            </row>
+                            <!--                            <row>
+                                <n:h5 class="modal-title"> Status</n:h5>
+                                <combobox width="100%" style="font-size:12px" height="25px" placeholder="-Pilih Jenis Status" readonly="true" model="@load(vm.statuses)" selectedItem="@bind(fx.status)"> 
+                                    <template name="model" var="items">
+                                        <comboitem label="@load(items)" value="@load(items)"/>
+                                    </template>
+                                </combobox> 
+                            </row>-->
+                        </rows>
+                    </grid>
+                </groupbox>
+                <separator> </separator>
+                <separator> </separator>
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="15%"></column>
+                            <column width="85%"></column>
+                        </columns>
+                        <rows>
+                            <row>
+                                <n:h5 class="modal-title"> Pertanyaan</n:h5>
+                                <textbox class="form-control" width="100%" value="@bind(vm.namaPertanyaan)" rows="3"/>  
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+                <separator/>
+                
+                <div class="modal-footer">
+                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
+                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSavePertanyaan')" />
+                </div>
+            </div>
+        
+        </div>
+    </window>
+</zk>

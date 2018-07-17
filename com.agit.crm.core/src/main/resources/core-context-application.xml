@@ -23,4 +23,28 @@
         <property name="resultAnswerRepository" ref="resultAnswerRepository"/>
         <property name="resultAnswerDTOAssembler" ref="resultAnswerDTOAssembler"/>
     </bean>
+    
+    <bean id="pertanyaanDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.PertanyaanDTOAssembler" />
+    <bean id="pertanyaanService" class="com.agit.crm.application.impl.PertanyaanServiceImpl">
+        <property name="pertanyaanRepository" ref="pertanyaanRepository"/>
+        <property name="pertanyaanDTOAssembler" ref="pertanyaanDTOAssembler"/>
+    </bean>
+    
+    <bean id="pertanyaanOpsiDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.PertanyaanOpsiDTOAssembler" />
+    <bean id="pertanyaanOpsiService" class="com.agit.crm.application.impl.PertanyaanOpsiServiceImpl">
+        <property name="pertanyaanOpsiRepository" ref="pertanyaanOpsiRepository"/>
+        <property name="pertanyaanOpsiDTOAssembler" ref="pertanyaanOpsiDTOAssembler"/>
+    </bean>
+    
+    <bean id="pertanyaanHasilDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.PertanyaanHasilDTOAssembler" />
+    <bean id="pertanyaanHasilService" class="com.agit.crm.application.impl.PertanyaanHasilServiceImpl">
+        <property name="pertanyaanHasilRepository" ref="pertanyaanHasilRepository"/>
+        <property name="pertanyaanHasilDTOAssembler" ref="pertanyaanHasilDTOAssembler"/>
+    </bean>
+    
+    <bean id="touchpointDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.TouchpointDTOAssembler" />
+    <bean id="touchpointDTOAssemblerService" class="com.agit.crm.application.impl.TouchpointServiceImpl">
+        <property name="touchpointRepository" ref="touchpointRepository"/>
+        <property name="touchpointDTOAssembler" ref="touchpointDTOAssembler"/>
+    </bean>
 </beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+    <class mutable="true" name="com.agit.crm.domain.customer.kuesioner.PertanyaanHasil" table="FWD_MST_PERTANYAAN_RESULT">
+        <!--<cache usage="read-only"/>-->
+        <id column="id" name="id">
+            <generator class="org.hibernate.id.IdentityGenerator"/>
+        </id>
+        <property column="pertanyaanHasilID" name="pertanyaanHasilID" not-null="true"/>
+        <property column="pertanyaanID" name="pertanyaanID" not-null="false"/>
+        <property column="pertanyaanOpsiID" name="pertanyaanOpsiID" not-null="false"/>
+        <property column="touchpointID" name="touchpointID" not-null="false"/>
+        <property column="nama" name="nama" not-null="true"/>
+        <property column="email" name="email" not-null="false"/>
+        <property column="contact" name="contact" not-null="false"/>
+        <property column="value" name="value" not-null="false"/>
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
+    </class>
+</hibernate-mapping>
