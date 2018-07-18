@@ -29,10 +29,9 @@
                 <param name="type">12</param>
             </type>
         </property>
-<!--        <list cascade="all" lazy="false" name="resultAnswers">
-            <key column="answerID" foreign-key="answerID"/>
-            <index column="answer_index"/>
-            <one-to-many class="com.agit.crm.domain.customer.feedback.ResultAnswer"/>
-        </list>-->
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
     </class>
 </hibernate-mapping>

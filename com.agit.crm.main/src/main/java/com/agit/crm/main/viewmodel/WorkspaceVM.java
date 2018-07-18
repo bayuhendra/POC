@@ -309,7 +309,7 @@ public class WorkspaceVM {
             loginInfoDTO.setSessionID(null);
             userService.updateLoginInfo(userInfo.getUserName(), loginInfoDTO);
         }
-        CommonViewModel.navigateToWithoutDetach("/crm/logout.zul", window, null);
+        CommonViewModel.navigateToWithoutDetach("/customer-feedback-experience/logout.zul", window, null);
     }
 
     @GlobalCommand("closeTab")

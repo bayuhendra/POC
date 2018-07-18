@@ -29,14 +29,6 @@
                                     </template>
                                 </combobox>
                             </row>
-                            <row>
-                                <n:h5 class="modal-title"> Status</n:h5>
-                                <combobox width="100%" style="font-size:12px" height="25px" placeholder="-Pilih Jenis Status" readonly="true" model="@load(vm.statuses)" selectedItem="@bind(fx.status)"> 
-                                    <template name="model" var="items">
-                                        <comboitem label="@load(items)" value="@load(items)"/>
-                                    </template>
-                                </combobox> 
-                            </row>
                 
                         </rows>
                        

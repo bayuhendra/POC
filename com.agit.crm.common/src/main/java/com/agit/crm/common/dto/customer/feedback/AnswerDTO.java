@@ -7,6 +7,7 @@ package com.agit.crm.common.dto.customer.feedback;
 
 import com.agit.crm.shared.type.TypeTouchpoints;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,12 +30,15 @@ public class AnswerDTO implements Serializable {
     private String chooseAnswer5;
     private String feedback;
     private TypeTouchpoints touchpoints;
-    private List<ResultAnswerDTO> resultAnswersDTO;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public AnswerDTO() {
     }
 
-    public AnswerDTO(String answerID, String chooseQuestion, String idChooseAnswer1, String idChooseAnswer2, String idChooseAnswer3, String idChooseAnswer4, String idChooseAnswer5, String chooseAnswer1, String chooseAnswer2, String chooseAnswer3, String chooseAnswer4, String chooseAnswer5, String feedback, TypeTouchpoints touchpoints, List<ResultAnswerDTO> resultAnswersDTO) {
+    public AnswerDTO(String answerID, String chooseQuestion, String idChooseAnswer1, String idChooseAnswer2, String idChooseAnswer3, String idChooseAnswer4, String idChooseAnswer5, String chooseAnswer1, String chooseAnswer2, String chooseAnswer3, String chooseAnswer4, String chooseAnswer5, String feedback, TypeTouchpoints touchpoints, String createdBy, Date createdDate, String modifiedBy, Date modifiedDate) {
         this.answerID = answerID;
         this.chooseQuestion = chooseQuestion;
         this.idChooseAnswer1 = idChooseAnswer1;
@@ -49,7 +53,10 @@ public class AnswerDTO implements Serializable {
         this.chooseAnswer5 = chooseAnswer5;
         this.feedback = feedback;
         this.touchpoints = touchpoints;
-        this.resultAnswersDTO = resultAnswersDTO;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.modifiedBy = modifiedBy;
+        this.modifiedDate = modifiedDate;
     }
 
     public String getFeedback() {
@@ -164,17 +171,41 @@ public class AnswerDTO implements Serializable {
         this.touchpoints = touchpoints;
     }
 
-    public List<ResultAnswerDTO> getResultAnswersDTO() {
-        return resultAnswersDTO;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setResultAnswersDTO(List<ResultAnswerDTO> resultAnswersDTO) {
-        this.resultAnswersDTO = resultAnswersDTO;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     @Override
     public String toString() {
-        return "AnswerDTO{" + "answerID=" + answerID + ", chooseQuestion=" + chooseQuestion + ", idChooseAnswer1=" + idChooseAnswer1 + ", idChooseAnswer2=" + idChooseAnswer2 + ", idChooseAnswer3=" + idChooseAnswer3 + ", idChooseAnswer4=" + idChooseAnswer4 + ", idChooseAnswer5=" + idChooseAnswer5 + ", chooseAnswer1=" + chooseAnswer1 + ", chooseAnswer2=" + chooseAnswer2 + ", chooseAnswer3=" + chooseAnswer3 + ", chooseAnswer4=" + chooseAnswer4 + ", chooseAnswer5=" + chooseAnswer5 + ", feedback=" + feedback + ", touchpoints=" + touchpoints + '}';
+        return "AnswerDTO{" + "answerID=" + answerID + ", chooseQuestion=" + chooseQuestion + ", idChooseAnswer1=" + idChooseAnswer1 + ", idChooseAnswer2=" + idChooseAnswer2 + ", idChooseAnswer3=" + idChooseAnswer3 + ", idChooseAnswer4=" + idChooseAnswer4 + ", idChooseAnswer5=" + idChooseAnswer5 + ", chooseAnswer1=" + chooseAnswer1 + ", chooseAnswer2=" + chooseAnswer2 + ", chooseAnswer3=" + chooseAnswer3 + ", chooseAnswer4=" + chooseAnswer4 + ", chooseAnswer5=" + chooseAnswer5 + ", feedback=" + feedback + ", touchpoints=" + touchpoints + ", createdBy=" + createdBy + ", createdDate=" + createdDate + ", modifiedBy=" + modifiedBy + ", modifiedDate=" + modifiedDate + '}';
     }
 
 }

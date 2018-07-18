@@ -7,6 +7,7 @@ package com.agit.crm.domain.customer.feedback;
 
 import com.agit.crm.shared.object.EntityObject;
 import com.agit.crm.shared.type.TypeTouchpoints;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,11 +33,15 @@ public class Answer implements EntityObject<Answer> {
     private String feedback;
     private List<ResultAnswer> resultAnswers;
     private TypeTouchpoints touchpoints;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public Answer() {
     }
 
-    public Answer(long id, String answerID, String chooseQuestion, String idChooseAnswer1, String idChooseAnswer2, String idChooseAnswer3, String idChooseAnswer4, String idChooseAnswer5, String chooseAnswer1, String chooseAnswer2, String chooseAnswer3, String chooseAnswer4, String chooseAnswer5, String feedback, List<ResultAnswer> resultAnswers, TypeTouchpoints touchpoints) {
+    public Answer(long id, String answerID, String chooseQuestion, String idChooseAnswer1, String idChooseAnswer2, String idChooseAnswer3, String idChooseAnswer4, String idChooseAnswer5, String chooseAnswer1, String chooseAnswer2, String chooseAnswer3, String chooseAnswer4, String chooseAnswer5, String feedback, List<ResultAnswer> resultAnswers, TypeTouchpoints touchpoints, String createdBy, Date createdDate, String modifiedBy, Date modifiedDate) {
         this.id = id;
         this.answerID = answerID;
         this.chooseQuestion = chooseQuestion;
@@ -53,6 +58,10 @@ public class Answer implements EntityObject<Answer> {
         this.feedback = feedback;
         this.resultAnswers = resultAnswers;
         this.touchpoints = touchpoints;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.modifiedBy = modifiedBy;
+        this.modifiedDate = modifiedDate;
     }
 
     public String getFeedback() {
@@ -181,6 +190,38 @@ public class Answer implements EntityObject<Answer> {
 
     public void setResultAnswers(List<ResultAnswer> resultAnswers) {
         this.resultAnswers = resultAnswers;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     public void assignNewAnswer(Answer answer) {

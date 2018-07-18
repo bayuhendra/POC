@@ -1,0 +1,38 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
+            form="@id('fx') @load(vm.pertanyaanOpsiDTO) @save(vm.pertanyaanOpsiDTO, before='buttonSavePertanyaan')"
+            width="60%" height="80%"
+            closable="true" sizable="true" title="Tambah Pertanyaan">
+        
+        <!-- Modal content-->
+        <div>
+            <div class="modal-body">
+                <separator> </separator>
+                <groupbox>
+                    <separator> </separator>
+                    <listbox mold="paging" pageSize="10" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.pertanyaanOpsiViewDTOs)">
+                        <listhead>
+                            <listheader label="Pertanyaan" width="15%" align="center"/>
+                            <listheader label="Opsi" width="60%" align="center"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem value="${each}">
+                                <listcell>
+                                    <label width="100%" value="@bind(each.pertanyaanID)"/>
+                                </listcell>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </groupbox>
+                <separator/>
+                
+                <div class="modal-footer">
+                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
+                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSavePertanyaanOpsi')" />
+                </div>
+            </div>
+        
+        </div>
+    </window>
+</zk>

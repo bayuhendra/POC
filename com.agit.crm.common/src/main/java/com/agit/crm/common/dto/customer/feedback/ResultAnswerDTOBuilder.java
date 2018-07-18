@@ -6,6 +6,7 @@
 package com.agit.crm.common.dto.customer.feedback;
 
 import com.agit.crm.shared.type.TypeTouchpoints;
+import java.util.Date;
 
 
 public class ResultAnswerDTOBuilder {
@@ -13,8 +14,14 @@ public class ResultAnswerDTOBuilder {
     private String ResultAnswerID;
     private String userID;
     private String answerID;
+    private String nama;
+    private String email;
     private String chooseAnswer;
     private TypeTouchpoints touchpoints;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public ResultAnswerDTOBuilder() {
     }
@@ -34,6 +41,16 @@ public class ResultAnswerDTOBuilder {
         return this;
     }
 
+    public ResultAnswerDTOBuilder setNama(String nama) {
+        this.nama = nama;
+        return this;
+    }
+
+    public ResultAnswerDTOBuilder setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public ResultAnswerDTOBuilder setChooseAnswer(String chooseAnswer) {
         this.chooseAnswer = chooseAnswer;
         return this;
@@ -44,8 +61,28 @@ public class ResultAnswerDTOBuilder {
         return this;
     }
 
+    public ResultAnswerDTOBuilder setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    public ResultAnswerDTOBuilder setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public ResultAnswerDTOBuilder setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+        return this;
+    }
+
+    public ResultAnswerDTOBuilder setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+        return this;
+    }
+
     public ResultAnswerDTO createResultAnswerDTO() {
-        return new ResultAnswerDTO(ResultAnswerID, userID, answerID, chooseAnswer, touchpoints);
+        return new ResultAnswerDTO(ResultAnswerID, userID, answerID, nama, email, chooseAnswer, touchpoints, createdBy, createdDate, modifiedBy, modifiedDate);
     }
     
 }

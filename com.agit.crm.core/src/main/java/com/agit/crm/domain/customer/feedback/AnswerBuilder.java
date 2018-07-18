@@ -6,6 +6,7 @@
 package com.agit.crm.domain.customer.feedback;
 
 import com.agit.crm.shared.type.TypeTouchpoints;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,6 +28,10 @@ public class AnswerBuilder {
     private String feedback;
     private List<ResultAnswer> resultAnswers;
     private TypeTouchpoints touchpoints;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public AnswerBuilder() {
     }
@@ -111,8 +116,28 @@ public class AnswerBuilder {
         return this;
     }
 
+    public AnswerBuilder setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    public AnswerBuilder setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public AnswerBuilder setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+        return this;
+    }
+
+    public AnswerBuilder setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+        return this;
+    }
+
     public Answer createAnswer() {
-        return new Answer(id, answerID, chooseQuestion, idChooseAnswer1, idChooseAnswer2, idChooseAnswer3, idChooseAnswer4, idChooseAnswer5, chooseAnswer1, chooseAnswer2, chooseAnswer3, chooseAnswer4, chooseAnswer5, feedback, resultAnswers, touchpoints);
+        return new Answer(id, answerID, chooseQuestion, idChooseAnswer1, idChooseAnswer2, idChooseAnswer3, idChooseAnswer4, idChooseAnswer5, chooseAnswer1, chooseAnswer2, chooseAnswer3, chooseAnswer4, chooseAnswer5, feedback, resultAnswers, touchpoints, createdBy, createdDate, modifiedBy, modifiedDate);
     }
     
 }

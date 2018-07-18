@@ -27,6 +27,12 @@ public class ResultAnswerDTOAssembler implements IObjectAssembler<ResultAnswer, 
                 .setUserID(domainObject.getUserID())
                 .setTouchpoints(domainObject.getTouchpoints())
                 .setChooseAnswer(domainObject.getChooseAnswer())
+                .setNama(domainObject.getNama())
+                .setEmail(domainObject.getEmail())
+                .setCreatedBy(domainObject.getCreatedBy())
+                .setCreatedDate(domainObject.getCreatedDate())
+                .setModifiedBy(domainObject.getModifiedBy())
+                .setModifiedDate(domainObject.getModifiedDate())
                 .createResultAnswerDTO();
     }
 
@@ -38,6 +44,12 @@ public class ResultAnswerDTOAssembler implements IObjectAssembler<ResultAnswer, 
                 .setUserID(dtoObject.getUserID())
                 .setTouchpoints(dtoObject.getTouchpoints())
                 .setChooseAnswer(dtoObject.getChooseAnswer())
+                .setNama(dtoObject.getNama())
+                .setEmail(dtoObject.getEmail())
+                .setCreatedBy(dtoObject.getCreatedBy())
+                .setCreatedDate(dtoObject.getCreatedDate())
+                .setModifiedBy(dtoObject.getModifiedBy())
+                .setModifiedDate(dtoObject.getModifiedDate())
                 .createResultAnswer();
     }
 

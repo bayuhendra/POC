@@ -9,7 +9,6 @@ import com.agit.crm.shared.status.Status;
 import com.agit.crm.shared.type.TypeTouchpoints;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  *

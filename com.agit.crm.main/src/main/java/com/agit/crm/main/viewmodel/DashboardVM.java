@@ -1,8 +1,10 @@
 package com.agit.crm.main.viewmodel;
 
 import com.agit.crm.common.application.QuestionService;
+import com.agit.crm.common.application.ResultAnswerService;
 import com.agit.crm.common.dto.customer.feedback.QuestionDTO;
 import com.agit.crm.common.dto.customer.feedback.QuestionDTOBuilder;
+import com.agit.crm.common.dto.customer.feedback.ResultAnswerDTO;
 import com.agit.crm.common.dto.usermanagement.UserDTO;
 import com.agit.crm.common.security.SecurityUtil;
 import com.agit.crm.shared.status.Status;
@@ -42,6 +44,9 @@ public class DashboardVM {
     @WireVariable
     QuestionService questionService;
 
+    @WireVariable
+    ResultAnswerService resultAnswerService;
+
     /* data user */
     private UserDTO user;
     private String userNPWP;
@@ -60,6 +65,8 @@ public class DashboardVM {
     private QuestionDTO questionDTO = new QuestionDTO();
     private List<QuestionDTO> questionDTOs = new ArrayList<>();
     private List<QuestionDTO> questionDTOsType = new ArrayList<>();
+
+    private List<ResultAnswerDTO> resultAnswerDTOs = new ArrayList<>();
 
     private List<String> listQuestion = new ArrayList<String>();
     private ListModelList<Status> statuses = new ListModelList<>();
@@ -93,6 +100,11 @@ public class DashboardVM {
         questionDTOs = questionService.findAll();
         if (questionDTOs.isEmpty()) {
             questionDTOs = Collections.emptyList();
+        }
+
+        resultAnswerDTOs = resultAnswerService.findAll();
+        if (resultAnswerDTOs.isEmpty()) {
+            resultAnswerDTOs = Collections.emptyList();
         }
 
         questionDTOs = questionService.findAllByTypeTouchpoints(TypeTouchpoints.TouchPoint_1);
@@ -446,6 +458,14 @@ public class DashboardVM {
 
     public void setQuestionDTOsType(List<QuestionDTO> questionDTOsType) {
         this.questionDTOsType = questionDTOsType;
+    }
+
+    public List<ResultAnswerDTO> getResultAnswerDTOs() {
+        return resultAnswerDTOs;
+    }
+
+    public void setResultAnswerDTOs(List<ResultAnswerDTO> resultAnswerDTOs) {
+        this.resultAnswerDTOs = resultAnswerDTOs;
     }
 
 }

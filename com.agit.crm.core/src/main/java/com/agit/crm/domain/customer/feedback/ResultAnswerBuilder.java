@@ -6,6 +6,7 @@
 package com.agit.crm.domain.customer.feedback;
 
 import com.agit.crm.shared.type.TypeTouchpoints;
+import java.util.Date;
 
 
 public class ResultAnswerBuilder {
@@ -14,8 +15,14 @@ public class ResultAnswerBuilder {
     private String ResultAnswerID;
     private String userID;
     private String answerID;
+    private String nama;
+    private String email;
     private String chooseAnswer;
     private TypeTouchpoints touchpoints;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public ResultAnswerBuilder() {
     }
@@ -40,6 +47,16 @@ public class ResultAnswerBuilder {
         return this;
     }
 
+    public ResultAnswerBuilder setNama(String nama) {
+        this.nama = nama;
+        return this;
+    }
+
+    public ResultAnswerBuilder setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public ResultAnswerBuilder setChooseAnswer(String chooseAnswer) {
         this.chooseAnswer = chooseAnswer;
         return this;
@@ -50,8 +67,28 @@ public class ResultAnswerBuilder {
         return this;
     }
 
+    public ResultAnswerBuilder setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    public ResultAnswerBuilder setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public ResultAnswerBuilder setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+        return this;
+    }
+
+    public ResultAnswerBuilder setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+        return this;
+    }
+
     public ResultAnswer createResultAnswer() {
-        return new ResultAnswer(id, ResultAnswerID, userID, answerID, chooseAnswer, touchpoints);
+        return new ResultAnswer(id, ResultAnswerID, userID, answerID, nama, email, chooseAnswer, touchpoints, createdBy, createdDate, modifiedBy, modifiedDate);
     }
     
 }

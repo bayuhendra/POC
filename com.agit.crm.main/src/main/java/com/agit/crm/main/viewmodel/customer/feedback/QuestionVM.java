@@ -16,8 +16,6 @@ import com.agit.crm.common.dto.customer.feedback.ResultAnswerDTO;
 import com.agit.crm.common.dto.customer.feedback.ResultAnswerDTOBuilder;
 import com.agit.crm.common.dto.usermanagement.UserDTO;
 import com.agit.crm.common.security.SecurityUtil;
-import com.agit.crm.domain.customer.feedback.AnswerRepository;
-import com.agit.crm.interfaces.web.facade.dto.assembler.crm.AnswerDTOAssembler;
 import com.agit.crm.shared.status.Status;
 import com.agit.crm.shared.type.TypeTouchpoints;
 import com.agit.crm.shared.zul.CommonViewModel;
@@ -31,7 +29,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -176,6 +182,7 @@ public class QuestionVM {
                     .setIdChooseAnswer3(UUID.randomUUID().toString())
                     .setIdChooseAnswer4(UUID.randomUUID().toString())
                     .setIdChooseAnswer5(UUID.randomUUID().toString())
+                    .setCreatedDate(new Date())
                     .createAnswerDTO();
         } else {
             this.answerDTO = answer;
@@ -190,6 +197,7 @@ public class QuestionVM {
             }
             resultAnswerDTO = new ResultAnswerDTOBuilder()
                     .setResultAnswerID(resultAnswerID)
+                    .setCreatedDate(new Date())
                     .createResultAnswerDTO();
         }
     }
@@ -240,6 +248,22 @@ public class QuestionVM {
         }
 
         return s + String.format("%0" + count + "d", max + 1);
+    }
+
+    @Command("buttonView1")
+    @NotifyChange("question")
+    public void buttonView1(@BindingParam("object") QuestionDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("questionDTO", obj);
+        CommonViewModel.navigateToWithoutDetach("/customer-feedback-experience/setup-question/view-question-1.zul", window, params);
+    }
+
+    @Command("buttonView2")
+    @NotifyChange("question")
+    public void buttonView2(@BindingParam("object") QuestionDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("questionDTO", obj);
+        CommonViewModel.navigateToWithoutDetach("/customer-feedback-experience/setup-question/view-question-2.zul", window, params);
     }
 
     @GlobalCommand
@@ -303,6 +327,7 @@ public class QuestionVM {
     @Command("buttonSaveQuestion")
     @NotifyChange({"questionDTO", "answerDTO", "answerDTOs"})
     public void buttonSaveQuestion(@BindingParam("object") QuestionDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        questionDTO.setStatus(Status.ACTIVE);
         questionService.SaveOrUpdate(questionDTO);
 
         showInformationMessagebox("Pertanyaan Berhasil Disimpan");
@@ -318,42 +343,50 @@ public class QuestionVM {
 
         resultAnswerDTO.setResultAnswerID(UUID.randomUUID().toString());
         resultAnswerDTO.setAnswerID(answerDTO.getAnswerID());
-        resultAnswerDTO.setUserID(user.getUserID());
         resultAnswerDTO.setTouchpoints(touchpoints.TouchPoint_1);
         resultAnswerService.SaveOrUpdate(resultAnswerDTO);
-
-//        final String username = "bayuhendra1078@gmail.com";
-//        final String passwordEmail = "bayuhendra1993";
-//        Properties prop = new Properties();
-//        prop.put("mail.smtp.auth", "true");
-//        prop.put("mail.smtp.starttls.enable", "true");
-//        prop.put("mail.smtp.host", "smtp.gmail.com");
-//        prop.put("mail.smtp.port", "587");
-//        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(username, passwordEmail);
-//            }
-//        });
-//        try {
-//
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress("bayuhendra1078@gmail.com"));
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("bayu.setiawan@ag-it.com"));
-//
-//            message.setSubject("Survei Kepuasan Pelanggan");
-//            message.setText("Test"
-//            );
-//            message.setSentDate(new Date());
-//
-//            Transport.send(message);
-//
-//            System.out.println("==================Sending Email Done==================");
-//        } catch (MessagingException e) {
-//            throw new RuntimeException(e);
-//        }
-        showInformationMessagebox("Next");
         BindUtils.postGlobalCommand(null, null, "refreshData", null);
-//        window.detach();
+    }
+
+    @Command("buttonFinishFeedback1")
+    @NotifyChange({"questionDTO", "resultAnswerDTO", "answerDTOs", "answerDTO"})
+    public void buttonFinishFeedback1(@BindingParam("object") AnswerDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+
+        final String username = "bayuhendra1078@gmail.com";
+        final String passwordEmail = "bayuhendra1993";
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, passwordEmail);
+            }
+        });
+        try {
+
+            Message message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress("bayuhendra1078@gmail.com"));
+            message1.setRecipients(Message.RecipientType.TO, InternetAddress.parse(resultAnswerDTO.getEmail()));
+
+            message1.setSubject("Survei Kepuasan Pelanggan");
+            message1.setSubject("Survei Kepuasan Pelanggan");
+            message1.setText("\n Dear  " + resultAnswerDTO.getNama()
+                    + "\n\n Terimakasih, Anda sudah mengisi kuesioner " + resultAnswerDTO.getTouchpoints()
+                    + "\n "
+                    + "\n\n FWD "
+            );
+            message1.setSentDate(new Date());
+
+            Transport.send(message1);
+
+            System.out.println("==================Sending Email Done==================");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+        BindUtils.postGlobalCommand(null, null, "refreshData", null);
+        window.detach();
     }
 
     @Command("buttonSaveFeedback2")
@@ -364,42 +397,50 @@ public class QuestionVM {
 
         resultAnswerDTO.setResultAnswerID(UUID.randomUUID().toString());
         resultAnswerDTO.setAnswerID(answerDTO.getAnswerID());
-        resultAnswerDTO.setUserID(user.getUserID());
         resultAnswerDTO.setTouchpoints(touchpoints.TouchPoint_2);
         resultAnswerService.SaveOrUpdate(resultAnswerDTO);
 
-//        final String username = "bayuhendra1078@gmail.com";
-//        final String passwordEmail = "bayuhendra1993";
-//        Properties prop = new Properties();
-//        prop.put("mail.smtp.auth", "true");
-//        prop.put("mail.smtp.starttls.enable", "true");
-//        prop.put("mail.smtp.host", "smtp.gmail.com");
-//        prop.put("mail.smtp.port", "587");
-//        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(username, passwordEmail);
-//            }
-//        });
-//        try {
-//
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress("bayuhendra1078@gmail.com"));
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("bayu.setiawan@ag-it.com"));
-//
-//            message.setSubject("Survei Kepuasan Pelanggan");
-//            message.setText("Test"
-//            );
-//            message.setSentDate(new Date());
-//
-//            Transport.send(message);
-//
-//            System.out.println("==================Sending Email Done==================");
-//        } catch (MessagingException e) {
-//            throw new RuntimeException(e);
-//        }
-        showInformationMessagebox("Next");
         BindUtils.postGlobalCommand(null, null, "refreshData", null);
-//        window.detach();
+    }
+
+    @Command("buttonFinishFeedback2")
+    @NotifyChange({"questionDTO", "resultAnswerDTO", "answerDTOs", "answerDTO"})
+    public void buttonFinishFeedback2(@BindingParam("object") AnswerDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        final String username = "bayuhendra1078@gmail.com";
+        final String passwordEmail = "bayuhendra1993";
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, passwordEmail);
+            }
+        });
+        try {
+
+            Message message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress("bayuhendra1078@gmail.com"));
+            message1.setRecipients(Message.RecipientType.TO, InternetAddress.parse(resultAnswerDTO.getEmail()));
+
+            message1.setSubject("Survei Kepuasan Pelanggan");
+            message1.setSubject("Survei Kepuasan Pelanggan");
+            message1.setText("\n Dear  " + resultAnswerDTO.getNama()
+                    + "\n\n Terimakasih, Anda sudah mengisi kuesioner " + resultAnswerDTO.getTouchpoints()
+                    + "\n "
+                    + "\n\n FWD "
+            );
+            message1.setSentDate(new Date());
+
+            Transport.send(message1);
+
+            System.out.println("==================Sending Email Done==================");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+        BindUtils.postGlobalCommand(null, null, "refreshData", null);
+        window.detach();
     }
 
     @Command("buttonSaveAnswer")

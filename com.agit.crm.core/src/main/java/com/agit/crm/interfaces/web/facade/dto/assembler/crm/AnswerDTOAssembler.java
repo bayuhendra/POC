@@ -11,7 +11,6 @@ import com.agit.crm.domain.customer.feedback.Answer;
 import com.agit.crm.domain.customer.feedback.AnswerBuilder;
 import com.agit.crm.shared.object.IObjectAssembler;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,7 +42,10 @@ public class AnswerDTOAssembler implements IObjectAssembler<Answer, AnswerDTO> {
                 .setChooseQuestion(domainObject.getChooseQuestion())
                 .setFeedback(domainObject.getFeedback())
                 .setTouchpoints(domainObject.getTouchpoints())
-//                .setResultAnswersDTO(domainObject.getResultAnswers() == null ? Collections.EMPTY_LIST : resultAnswerDTOAssembler.toDTOs(domainObject.getResultAnswers()))
+                .setCreatedBy(domainObject.getCreatedBy())
+                .setCreatedDate(domainObject.getCreatedDate())
+                .setModifiedBy(domainObject.getModifiedBy())
+                .setModifiedDate(domainObject.getModifiedDate())
                 .createAnswerDTO();
     }
 
@@ -64,7 +66,10 @@ public class AnswerDTOAssembler implements IObjectAssembler<Answer, AnswerDTO> {
                 .setChooseQuestion(dtoObject.getChooseQuestion())
                 .setFeedback(dtoObject.getFeedback())
                 .setTouchpoints(dtoObject.getTouchpoints())
-//                .setResultAnswers(dtoObject.getResultAnswersDTO() == null ? Collections.EMPTY_LIST : resultAnswerDTOAssembler.toDomains(dtoObject.getResultAnswersDTO()))
+                .setCreatedBy(dtoObject.getCreatedBy())
+                .setCreatedDate(dtoObject.getCreatedDate())
+                .setModifiedBy(dtoObject.getModifiedBy())
+                .setModifiedDate(dtoObject.getModifiedDate())
                 .createAnswer();
     }
 

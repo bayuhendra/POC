@@ -7,6 +7,7 @@ package com.agit.crm.domain.customer.feedback;
 
 import com.agit.crm.shared.object.EntityObject;
 import com.agit.crm.shared.type.TypeTouchpoints;
+import java.util.Date;
 
 /**
  *
@@ -18,20 +19,32 @@ public class ResultAnswer implements EntityObject<ResultAnswer> {
     private String ResultAnswerID;
     private String userID;
     private String answerID;
+    private String nama;
+    private String email;
 
     private String chooseAnswer;
     private TypeTouchpoints touchpoints;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public ResultAnswer() {
     }
 
-    public ResultAnswer(long id, String ResultAnswerID, String userID, String answerID, String chooseAnswer, TypeTouchpoints touchpoints) {
+    public ResultAnswer(long id, String ResultAnswerID, String userID, String answerID, String nama, String email, String chooseAnswer, TypeTouchpoints touchpoints, String createdBy, Date createdDate, String modifiedBy, Date modifiedDate) {
         this.id = id;
         this.ResultAnswerID = ResultAnswerID;
         this.userID = userID;
         this.answerID = answerID;
+        this.nama = nama;
+        this.email = email;
         this.chooseAnswer = chooseAnswer;
         this.touchpoints = touchpoints;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.modifiedBy = modifiedBy;
+        this.modifiedDate = modifiedDate;
     }
 
     public long getId() {
@@ -80,6 +93,54 @@ public class ResultAnswer implements EntityObject<ResultAnswer> {
 
     public void setTouchpoints(TypeTouchpoints touchpoints) {
         this.touchpoints = touchpoints;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     public void assignNewResultAnswer(ResultAnswer resultAnswer) {

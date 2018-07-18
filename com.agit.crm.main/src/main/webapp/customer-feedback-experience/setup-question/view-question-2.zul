@@ -2,13 +2,34 @@
     <window apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
             form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback2')"
-            width="50%" height="70%"
-            closable="true" sizable="true"
+            width="80%" height="97%" closable="true" sizable="true"
             title="Feedback">
         <separator></separator>
         <label style="color:#022c2f;font-size:15px;font-weight: bold;align:center" value="Survei Kepuasan Pelanggan"/>
         <separator></separator>
         <div height="5px" />
+        <groupbox>
+            <grid style="border:0">
+                <columns>
+                    <column width="15%"></column>
+                    <column width="30%"></column>
+                    <column width="20%"></column>
+                    <column width="35%"></column>
+                </columns>
+                <rows>
+                    <row>  
+                        <n:h5 class="modal-title"> Nama</n:h5>
+                        <textbox class="form-control" width="100%" value="@bind(fx.nama)"/>    
+                    </row>
+                    <row>
+                        <n:h5 class="modal-title"> Email</n:h5>
+                        <textbox class="form-control" width="100%" value="@bind(fx.email)"/>       
+                    </row>
+                
+                </rows>
+                       
+            </grid>
+        </groupbox>
         <listbox rows="1" mold="paging" pageSize="1" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerType2DTOs)">
             <listhead>
                 <listheader label="" width="100%" align="left"/>
@@ -16,27 +37,39 @@
             <template name="model">
                 <listitem value="${each}">
                     <listcell>
+                        <separator bar="true" />
                         <label width="100%" value="@bind(each.chooseQuestion)" style="color:#022c2f;font-size:12px;font-weight: bold;align:center"/>
                         <separator bar="true" />
                         <radiogroup id="@bind(each.answerID)" selectedItem="@bind(fx.chooseAnswer)">
                             <separator></separator>
-                            <radio id="@bind(each.idChooseAnswer1)" label="@bind(each.chooseAnswer1)" value="100"/>
+                            <radio id="@bind(each.idChooseAnswer1)" label="@bind(each.chooseAnswer1)" value="@bind(each.chooseAnswer1)"/>
                             <separator></separator>
-                            <radio id="@bind(each.idChooseAnswer2)" label="@bind(each.chooseAnswer2)" value="80"/>
+                            <radio id="@bind(each.idChooseAnswer2)" label="@bind(each.chooseAnswer2)" value="@bind(each.chooseAnswer2)"/>
                             <separator></separator>
-                            <radio id="@bind(each.idChooseAnswer3)" label="@bind(each.chooseAnswer3)" value="60"/>
+                            <radio id="@bind(each.idChooseAnswer3)" label="@bind(each.chooseAnswer3)" value="@bind(each.chooseAnswer3)"/>
                             <separator></separator>
-                            <radio id="@bind(each.idChooseAnswer4)" label="@bind(each.chooseAnswer4)" value="40"/>
+                            <radio id="@bind(each.idChooseAnswer4)" label="@bind(each.chooseAnswer4)" value="@bind(each.chooseAnswer4)"/>
                             <separator></separator>
-                            <radio id="@bind(each.idChooseAnswer5)" label="@bind(each.chooseAnswer5)" value="20"/>
+                            <radio id="@bind(each.idChooseAnswer5)" label="@bind(each.chooseAnswer5)" value="@bind(each.chooseAnswer4)"/>
                         </radiogroup>
                     </listcell>
                     
                 </listitem>
             </template>
         </listbox>
+        <separator></separator>
+        <n:h5 class="modal-title"> Apakah Anda memiliki komentar, pertanyaan atau keluhan?</n:h5>
+        <textbox class="form-control" width="100%" rows="3"/>
         <div class="modal-footer">
-            <button style="background-color: #022c2f;color:white" label="Save" onClick="@command('buttonSaveFeedback2')" />
+            <button style="background-color: #022c2f;color:white" label="Save" onClick="@command('buttonSaveFeedback2')"/>                                         
+            
+            <button style="background-color: #022c2f;color:white" label="Finish" onClick="@command('buttonFinishFeedback2')">                                         
+                <attribute name="onClick">
+    <![CDATA[
+                                         Filedownload.save("/files/FormulirKlaimKecelakaan-AccidentalClaimForm-200715.pdf", null);
+                                    ]]>
+                </attribute>
+            </button>
         </div>
     </window>
 

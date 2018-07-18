@@ -13,6 +13,8 @@
         <property column="ResultAnswerID" name="ResultAnswerID" not-null="false"/>
         <property column="userID" name="userID" not-null="false"/>
         <property column="answerID" name="answerID" not-null="false"/>
+        <property column="nama" name="nama" not-null="false"/>
+        <property column="email" name="email" not-null="false"/>
         <property column="chooseAnswer" name="chooseAnswer" not-null="false"/>
         <property column="touchpoints" name="touchpoints" not-null="false">
             <type name="org.hibernate.type.EnumType">
@@ -20,5 +22,9 @@
                 <param name="type">12</param>
             </type>
         </property>
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
     </class>
 </hibernate-mapping>

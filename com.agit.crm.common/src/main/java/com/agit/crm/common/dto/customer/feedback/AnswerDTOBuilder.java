@@ -6,7 +6,7 @@
 package com.agit.crm.common.dto.customer.feedback;
 
 import com.agit.crm.shared.type.TypeTouchpoints;
-import java.util.List;
+import java.util.Date;
 
 
 public class AnswerDTOBuilder {
@@ -25,7 +25,10 @@ public class AnswerDTOBuilder {
     private String chooseAnswer5;
     private String feedback;
     private TypeTouchpoints touchpoints;
-    private List<ResultAnswerDTO> resultAnswersDTO;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
 
     public AnswerDTOBuilder() {
     }
@@ -100,13 +103,28 @@ public class AnswerDTOBuilder {
         return this;
     }
 
-    public AnswerDTOBuilder setResultAnswersDTO(List<ResultAnswerDTO> resultAnswersDTO) {
-        this.resultAnswersDTO = resultAnswersDTO;
+    public AnswerDTOBuilder setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    public AnswerDTOBuilder setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public AnswerDTOBuilder setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+        return this;
+    }
+
+    public AnswerDTOBuilder setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
         return this;
     }
 
     public AnswerDTO createAnswerDTO() {
-        return new AnswerDTO(answerID, chooseQuestion, idChooseAnswer1, idChooseAnswer2, idChooseAnswer3, idChooseAnswer4, idChooseAnswer5, chooseAnswer1, chooseAnswer2, chooseAnswer3, chooseAnswer4, chooseAnswer5, feedback, touchpoints, resultAnswersDTO);
+        return new AnswerDTO(answerID, chooseQuestion, idChooseAnswer1, idChooseAnswer2, idChooseAnswer3, idChooseAnswer4, idChooseAnswer5, chooseAnswer1, chooseAnswer2, chooseAnswer3, chooseAnswer4, chooseAnswer5, feedback, touchpoints, createdBy, createdDate, modifiedBy, modifiedDate);
     }
     
 }

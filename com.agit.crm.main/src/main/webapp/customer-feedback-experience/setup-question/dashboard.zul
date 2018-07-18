@@ -3,7 +3,7 @@
 <window apply="com.agit.crm.main.viewmodel.customer.feedback.PieDonutComposer">
  
     <div align="center">
-        <groupbox width="100%" contentStyle="border:0;">
+        <groupbox contentStyle="border:0;">
             <grid style="border:0">
                 <columns>
                     <column width="50%" align="center"></column>
@@ -11,8 +11,24 @@
                 </columns>
                 <rows>
                     <row>
-                        <charts id="chart" type="pie" title="Summary Feedback TouchPoints 1"/>
+                        <charts id="chart" type="pie" title="Summary Feedback TouchPoints 1" />
                         <charts id="chart1" type="pie" title="Summary Feedback TouchPoints 2"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+    </div>
+    <div align="center">
+        <groupbox contentStyle="border:0;">
+            <grid style="border:0">
+                <columns>
+                    <column width="100%" align="center"></column>
+                </columns>
+                <rows>
+                    <row>
+                        <charts id="chart2" type="column"
+                                title="Monthly Average Feedback"
+                        />
                     </row>
                 </rows>
             </grid>
