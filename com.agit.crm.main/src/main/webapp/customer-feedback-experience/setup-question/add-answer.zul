@@ -39,23 +39,23 @@
                             </row>
                             <row>
                                 <n:h5 class="modal-title"> Jawaban 1 </n:h5>
-                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer1)" rows="2"/>  
+                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer1)" rows="1"/>  
                             </row>
                             <row>
                                 <n:h5 class="modal-title"> Jawaban 2</n:h5>
-                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer2)" rows="2"/>  
+                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer2)" rows="1"/>  
                             </row>
                             <row>
                                 <n:h5 class="modal-title"> Jawaban 3</n:h5>
-                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer3)" rows="2"/>  
+                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer3)" rows="1"/>  
                             </row>
                             <row>
                                 <n:h5 class="modal-title"> Jawaban 4</n:h5>
-                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer4)" rows="2"/>  
+                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer4)" rows="1"/>  
                             </row>
                             <row>
                                 <n:h5 class="modal-title"> Jawaban 5</n:h5>
-                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer5)" rows="2"/>  
+                                <textbox class="form-control" width="100%" value="@bind(fx.chooseAnswer5)" rows="1"/>  
                             </row>
                         </rows>
                     </grid>
@@ -66,6 +66,7 @@
                              emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerDTOs)">
                         <listhead>
                             <listheader label="Question" width="30%" align="center"/>
+                            <listheader label="TouchPoints" width="15%" align="center"/>
                             <listheader label="Answer 1" width="15%" align="center"/>
                             <listheader label="Answer 2" width="15%" align="center"/>
                             <listheader label="Answer 3" width="15%" align="center"/>
@@ -77,6 +78,9 @@
                             <listitem value="${each}">
                                 <listcell>
                                     <label width="100%" value="@bind(each.chooseQuestion)" />
+                                </listcell>
+                                <listcell>
+                                    <label width="100%" value="@bind(each.touchpoints)"/>
                                 </listcell>
                                 <listcell>
                                     <label width="100%" value="@bind(each.chooseAnswer1)"/>

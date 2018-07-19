@@ -1,38 +1,75 @@
 <zk xmlns:w="client" xmlns:n="native">
     <window apply="org.zkoss.bind.BindComposer"
-            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
-            form="@id('fx') @load(vm.pertanyaanOpsiDTO) @save(vm.pertanyaanOpsiDTO, before='buttonSavePertanyaan')"
-            width="60%" height="80%"
-            closable="true" sizable="true" title="Tambah Pertanyaan">
-        
-        <!-- Modal content-->
-        <div>
-            <div class="modal-body">
-                <separator> </separator>
-                <groupbox>
-                    <separator> </separator>
-                    <listbox mold="paging" pageSize="10" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.pertanyaanOpsiViewDTOs)">
-                        <listhead>
-                            <listheader label="Pertanyaan" width="15%" align="center"/>
-                            <listheader label="Opsi" width="60%" align="center"/>
-                        </listhead>
-                        <template name="model">
-                            <listitem value="${each}">
-                                <listcell>
-                                    <label width="100%" value="@bind(each.pertanyaanID)"/>
-                                </listcell>
-                            </listitem>
-                        </template>
-                    </listbox>
-                </groupbox>
-                <separator/>
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')"
+            width="80%" height="97%" closable="true" sizable="true"
+            title="Feedback">
+        <separator></separator>
+        <label style="color:#022c2f;font-size:15px;font-weight: bold;align:center" value="Survei Kepuasan Pelanggan"/>
+        <separator></separator>
+        <div height="5px" />
+        <groupbox>
+            <grid style="border:0">
+                <columns>
+                    <column width="15%"></column>
+                    <column width="30%"></column>
+                    <column width="20%"></column>
+                    <column width="35%"></column>
+                </columns>
+                <rows>
+                    <row>  
+                        <n:h5 class="modal-title"> Nama</n:h5>
+                        <textbox class="form-control" width="100%" value="@bind(fx.nama)"/>    
+                    </row>
+                    <row>
+                        <n:h5 class="modal-title"> Email</n:h5>
+                        <textbox class="form-control" width="100%" value="@bind(fx.email)"/>       
+                    </row>
                 
-                <div class="modal-footer">
-                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
-                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSavePertanyaanOpsi')" />
-                </div>
-            </div>
-        
+                </rows>
+                       
+            </grid>
+        </groupbox>
+        <listbox rows="1" mold="paging" pageSize="1" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerType1DTOs)">
+            <listhead>
+                <listheader label="" width="100%" align="left"/>
+            </listhead>
+            <template name="model">
+                <listitem value="${each}">
+                    <listcell>
+                        <separator bar="true" />
+                        <label width="100%" value="@bind(each.chooseQuestion)" style="color:#022c2f;font-size:12px;font-weight: bold;align:center"/>
+                        <separator bar="true" />
+                        <radiogroup id="@bind(each.answerID)" selectedItem="@bind(fx.chooseAnswer)">
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer1)" label="@bind(each.chooseAnswer1)" value="@bind(each.chooseAnswer1)"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer2)" label="@bind(each.chooseAnswer2)" value="@bind(each.chooseAnswer2)"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer3)" label="@bind(each.chooseAnswer3)" value="@bind(each.chooseAnswer3)"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer4)" label="@bind(each.chooseAnswer4)" value="@bind(each.chooseAnswer4)"/>
+                            <separator></separator>
+                            <radio id="@bind(each.idChooseAnswer5)" label="@bind(each.chooseAnswer5)" value="@bind(each.chooseAnswer4)"/>
+                        </radiogroup>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+        <separator></separator>
+        <n:h5 class="modal-title"> Apakah Anda memiliki komentar, pertanyaan atau keluhan?</n:h5>
+        <textbox class="form-control" width="100%" rows="3"/>
+        <div class="modal-footer">
+            <button style="background-color: #022c2f;color:white" label="Save" onClick="@command('buttonSaveFeedback1')"/>                                         
+            
+            <button style="background-color: #022c2f;color:white" label="Finish" onClick="@command('buttonFinishFeedback1')">                                         
+                <attribute name="onClick">
+    <![CDATA[
+                                         Filedownload.save("/files/FormulirKlaimKecelakaan-AccidentalClaimForm-200715.pdf", null);
+                                    ]]>
+                </attribute>
+            </button>
         </div>
     </window>
+
 </zk>

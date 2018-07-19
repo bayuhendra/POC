@@ -13,7 +13,13 @@
                     form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')">
                 <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
                     <div class="container">
-                        <a href="" class="navbar-brand">FWD - Touchpoints 1</a>
+                        <a href="" class="navbar-brand">FWD - LAYANAN HOTLINE 1500391 (24/7)</a>
+                        <navbar zclass="none" sclass="navbar-collapse">
+                            <navitem label="Beranda" onClick='Clients.showNotification("Not implemented yet")'/>
+                            <navitem label="Tentang Kami" onClick='Clients.showNotification("Not implemented yet")'/>
+                            <navitem label="Masuk" selected="true"/>
+                            <navitem label="Chat Sekarang" onClick='Clients.showNotification("Not implemented yet")'/>
+                        </navbar>
                     </div>
                 </div>
 
@@ -86,14 +92,14 @@
                             <rows>
                                 <row>
                                     <button label="FWD APro Accident Protector" style="background-color: #022c2f;color:white" width="300px" onClick="@command('buttonView1', object=each)">
-<!--                                        <attribute name="onClick">
+                                        <!--                                        <attribute name="onClick">
     <![CDATA[
                                          Filedownload.save("/files/FormulirKlaimKecelakaan-AccidentalClaimForm-200715.pdf", null);
                                     ]]>
                                         </attribute>-->
                                     </button>
                                     <button label="FWD SPrint Family Health dan Protection" style="background-color: #022c2f;color:white" width="300px" onClick="@command('buttonView1', object=each)">
-<!--                                        <attribute name="onClick"><![CDATA[
+                                        <!--                                        <attribute name="onClick"><![CDATA[
                                              Filedownload.save("/files/FormulirKlaimKecelakaan-AccidentalClaimForm-200715.pdf", null);
                                         ]]></attribute>-->
                                     </button>

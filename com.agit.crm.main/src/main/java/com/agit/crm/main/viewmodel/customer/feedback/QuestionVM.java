@@ -372,9 +372,11 @@ public class QuestionVM {
 
             message1.setSubject("Survei Kepuasan Pelanggan");
             message1.setSubject("Survei Kepuasan Pelanggan");
-            message1.setText("\n Dear  " + resultAnswerDTO.getNama()
-                    + "\n\n Terimakasih, Anda sudah mengisi kuesioner " + resultAnswerDTO.getTouchpoints()
+            message1.setText("\n Dear  Bapak/Ibu " + resultAnswerDTO.getNama()
+                    + "\n\n FWD mengucapkan terima kasih atas feedback yang ada berikan di " + resultAnswerDTO.getTouchpoints()
+                    + "\n\n Terimakasih untuk partisipasi anda."
                     + "\n "
+                    + "\n\n Best Regards "
                     + "\n\n FWD "
             );
             message1.setSentDate(new Date());
@@ -426,9 +428,11 @@ public class QuestionVM {
 
             message1.setSubject("Survei Kepuasan Pelanggan");
             message1.setSubject("Survei Kepuasan Pelanggan");
-            message1.setText("\n Dear  " + resultAnswerDTO.getNama()
-                    + "\n\n Terimakasih, Anda sudah mengisi kuesioner " + resultAnswerDTO.getTouchpoints()
+            message1.setText("\n Dear  Bapak/Ibu " + resultAnswerDTO.getNama()
+                    + "\n\n FWD mengucapkan terima kasih atas feedback yang ada berikan di " + resultAnswerDTO.getTouchpoints()
+                    + "\n\n Terimakasih untuk partisipasi anda."
                     + "\n "
+                    + "\n\n Best Regards "
                     + "\n\n FWD "
             );
             message1.setSentDate(new Date());
