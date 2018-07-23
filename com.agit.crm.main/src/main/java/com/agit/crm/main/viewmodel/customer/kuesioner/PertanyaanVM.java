@@ -2,12 +2,13 @@ package com.agit.crm.main.viewmodel.customer.kuesioner;
 
 import com.agit.crm.common.application.PertanyaanOpsiService;
 import com.agit.crm.common.application.PertanyaanService;
-import com.agit.crm.common.dto.customer.feedback.AnswerDTO;
+import com.agit.crm.common.application.TouchpointService;
 import com.agit.crm.common.dto.customer.feedback.QuestionDTO;
 import com.agit.crm.common.dto.customer.kuesioner.PertanyaanDTO;
 import com.agit.crm.common.dto.customer.kuesioner.PertanyaanDTOBuilder;
 import com.agit.crm.common.dto.customer.kuesioner.PertanyaanOpsiDTO;
 import com.agit.crm.common.dto.customer.kuesioner.PertanyaanOpsiDTOBuilder;
+import com.agit.crm.common.dto.customer.touchpoint.TouchpointDTO;
 import com.agit.crm.common.dto.usermanagement.UserDTO;
 import com.agit.crm.common.security.SecurityUtil;
 import com.agit.crm.shared.zul.CommonViewModel;
@@ -20,7 +21,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -51,6 +51,9 @@ public class PertanyaanVM {
     PertanyaanOpsiService pertanyaanOpsiService;
 
     @WireVariable
+    TouchpointService touchpointService;
+
+    @WireVariable
     UserService userService;
 
     private PertanyaanDTO pertanyaanDTO = new PertanyaanDTO();
@@ -61,6 +64,9 @@ public class PertanyaanVM {
 
     private PertanyaanOpsiDTO pertanyaanOpsiDTO = new PertanyaanOpsiDTO();
     private List<PertanyaanOpsiDTO> pertanyaanOpsiDTOs = new ArrayList<>();
+
+    private TouchpointDTO touchpointDTO = new TouchpointDTO();
+    private List<TouchpointDTO> touchpointDTOs = new ArrayList<>();
 
     private UserDTO user;
 
@@ -82,9 +88,10 @@ public class PertanyaanVM {
     private void initData() {
         pertanyaanDTOs = pertanyaanService.findAll();
         user = userService.findByID(SecurityUtil.getUserName());
-        listTouchpoint.add("Portal ECommerce FWD 1");
-        listTouchpoint.add("Portal ECommerce FWD 2");
-        listTouchpoint.add("Portal ECommerce FWD 3");
+        touchpointDTOs = touchpointService.findAll();
+        for (TouchpointDTO d : touchpointDTOs) {
+            listTouchpoint.add(d.getTouchpoint());
+        }
     }
 
     private void checkValidity(PertanyaanDTO pertanyaan, PertanyaanOpsiDTO opsi, PageNavigation previous) {
@@ -157,7 +164,6 @@ public class PertanyaanVM {
     @Command("buttonSavePertanyaan")
     @NotifyChange({"pertanyaanDTO", "pertanyaanDTOs"})
     public void buttonSavePertanyaan(@BindingParam("object") PertanyaanDTO obj, @ContextParam(ContextType.VIEW) Window window) {
-
         pertanyaanDTO.setPertanyaan(namaPertanyaan);
         pertanyaanDTO.setTouchpoint(touchpoint);
         pertanyaanService.saveOrUpdate(pertanyaanDTO);
@@ -358,6 +364,22 @@ public class PertanyaanVM {
 
     public void setTouchpoint(String touchpoint) {
         this.touchpoint = touchpoint;
+    }
+
+    public TouchpointDTO getTouchpointDTO() {
+        return touchpointDTO;
+    }
+
+    public void setTouchpointDTO(TouchpointDTO touchpointDTO) {
+        this.touchpointDTO = touchpointDTO;
+    }
+
+    public List<TouchpointDTO> getTouchpointDTOs() {
+        return touchpointDTOs;
+    }
+
+    public void setTouchpointDTOs(List<TouchpointDTO> touchpointDTOs) {
+        this.touchpointDTOs = touchpointDTOs;
     }
 
 }

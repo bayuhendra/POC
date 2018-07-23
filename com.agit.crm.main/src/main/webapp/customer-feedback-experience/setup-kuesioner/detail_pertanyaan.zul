@@ -2,7 +2,7 @@
     <window apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.kuesioner.PertanyaanVM')"
             form="@id('fx') @load(vm.pertanyaanDTO) @save(vm.pertanyaanDTO, before='buttonSavePertanyaan')"
-            width="60%" height="80%"
+            width="60%" height="85%"
             closable="true" sizable="true" title="Tambah Pertanyaan">
         
         <!-- Modal content-->
@@ -56,8 +56,6 @@
                         </template>
                     </listbox>
                 </groupbox>
-                <separator/>
-                
                 <div class="modal-footer">
                     <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
                     <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSavePertanyaanOpsi')" />

@@ -1,0 +1,7 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window>
+        <panel title="Pertanyaan" sclass="panel-primary">
+            <panelchildren>Panel content</panelchildren>
+        </panel>
+    </window>
+</zk>

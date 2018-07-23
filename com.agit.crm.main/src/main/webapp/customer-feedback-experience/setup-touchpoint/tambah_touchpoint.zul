@@ -1,0 +1,43 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.touchpoint.TouchpointVM')"
+            form="@id('fx') @load(vm.touchpointDTO) @save(vm.touchpointDTO, before='buttonSaveTouchpoint')"
+            width="50%" height="60%"
+            closable="true" sizable="true" title="Tambah Touchpoint">
+        
+        <!-- Modal content-->
+        <div>
+            <div class="modal-body">
+                <groupbox>
+                    <grid style="border:0">
+                        <columns>
+                            <column width="15%"></column>
+                            <column width="85%"></column>
+                        </columns>
+                        <rows>
+                            <row>
+                                <n:h5 class="modal-title"> Nama Touchpoint</n:h5>
+                                <textbox class="form-control" width="100%" value="@bind(vm.namaTouchpoint)" rows="1"/>  
+                            </row>
+                            <row>
+                                <n:h5 class="modal-title"> Deskripsi</n:h5>
+                                <textbox class="form-control" width="100%" value="@bind(vm.deskripsi)" rows="3"/>  
+                            </row>
+                            <row>
+                                <n:h5 class="modal-title"> URL</n:h5>
+                                <textbox class="form-control" width="100%" value="@bind(vm.url)" rows="1"/>  
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+                <separator/>
+                
+                <div class="modal-footer">
+                    <button style="background-color: #022c2f;color:white" label="Kembali" onClick="@command('buttonKembali')" />
+                    <button style="background-color: #022c2f;color:white" label="Simpan" onClick="@command('buttonSaveTouchpoint')" />
+                </div>
+            </div>
+        
+        </div>
+    </window>
+</zk>

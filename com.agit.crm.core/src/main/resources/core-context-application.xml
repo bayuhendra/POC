@@ -43,7 +43,7 @@
     </bean>
     
     <bean id="touchpointDTOAssembler" class="com.agit.crm.interfaces.web.facade.dto.assembler.crm.TouchpointDTOAssembler" />
-    <bean id="touchpointDTOAssemblerService" class="com.agit.crm.application.impl.TouchpointServiceImpl">
+    <bean id="touchpointService" class="com.agit.crm.application.impl.TouchpointServiceImpl">
         <property name="touchpointRepository" ref="touchpointRepository"/>
         <property name="touchpointDTOAssembler" ref="touchpointDTOAssembler"/>
     </bean>

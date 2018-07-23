@@ -1,0 +1,51 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.touchpoint.TouchpointVM')"
+            form="@id('fx') @load(vm.touchpointDTO) @save(vm.touchpointDTO, before='buttonSaveTouchpoint')">
+        <separator height="5px"/>
+        <div align="left" class="bs-example">
+            <div class="col-lg-6">
+                <div class="input-group" >
+                    <textbox class="form-control" placeholder="Masukkan Parameter" />
+                    <span class="input-group-btn">
+                        <button style="background-color: #022c2f;color:white">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <button label="Tambah Touchpoint" style="background-color: #022c2f;color:white" onClick="@command('buttonTambahTouchpoint')"/>
+            <space width="5px"/>
+        </div>
+        <separator width="30px"/>
+        <listbox mold="paging" pageSize="10" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.touchpointDTOs)">
+            <listhead>
+                <listheader label="Code" width="10%" align="center"/>
+                <listheader label="Touchpoints" width="25%" align="center"/>
+                <listheader label="Deskripsi" width="35%" align="center"/>
+                <listheader label="URL" width="15%" align="center"/>
+                <listheader label="Aksi" width="15%" align="center"/>
+            </listhead>
+            <template name="model">
+                <listitem value="${each}">
+                    <listcell>
+                        <label width="100%" value="@bind(each.touchpointID)"/>
+                    </listcell>
+                    <listcell>
+                        <label width="100%" value="@bind(each.touchpoint)"/>
+                    </listcell>
+                    <listcell>
+                        <label width="100%" value="@bind(each.deskripsi)"/>
+                    </listcell>
+                    <listcell>
+                        <label width="100%" value="@bind(each.url)"/>
+                    </listcell>
+                    <listcell >
+                        <a onClick="@command('ubahTouchpoint', object=each)" image="/images/skk_edit.png" sclass="btn btn-default"/>
+                        <a onClick="@command('deleteTouchpoint', object=each)" image="/images/clear_x.png" sclass="btn btn-default"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>
