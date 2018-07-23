@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
+<?page title="FWD"?>
+<zk xmlns:w="client" xmlns:n="native" style="background-color: floralwhite;">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')">
+        <image id="image" src="images/step3-1.PNG" />
+        <image id="image-2" src="images/step3-2.PNG" />
+        <image id="image-1" src="images/step3.PNG" />
+        <separator></separator>
+        <separator></separator>
+        <separator></separator>
+        <vbox width="100%" height="100%" align="center">
+            <grid style="border:0">
+                <columns>
+                    <column align="center" width="40%"/>
+                </columns>
+                <rows>
+                    <row>
+                        <button label="Lanjut" style="background-color: #022c2f;color:white" width="200px" onClick="@command('buttonStep4', object=each)">
+                        </button>
+                    </row>
+                </rows>
+            </grid>
+        </vbox>
+        <separator></separator>
+        <separator></separator>
+        <separator></separator>
+        <image id="image-3" src="images/step3-3.PNG" />
+    </window>
+</zk>

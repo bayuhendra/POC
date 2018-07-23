@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
+<?page title="FWD"?>
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')" 
+            width="37%" height="80%">
+        <image id="image" src="images/step7.PNG" align="center"/>
+        <vbox width="100%" height="100%" align="center">
+            <a class="btn btn-success btn-lg" onClick="@command('buttonView1')">
+                Lanjut
+            </a>
+        </vbox>
+    </window>
+</zk>

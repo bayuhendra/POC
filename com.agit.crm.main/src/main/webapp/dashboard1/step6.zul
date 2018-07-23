@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
+<?page title="FWD"?>
+<zk xmlns:w="client" xmlns:n="native">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')">
+        <image id="image" src="images/step6.PNG" align="center"/>
+        <panel>
+            <panelchildren>
+                <div class="container" xmlns:n="native">
+                    <n:h1>
+                        <label style="font-size: 20px; font-weight: bold;color:black" value="Lokasi"/>
+                    </n:h1>
+                    <cell>
+                        <n:p>
+                            Sesuai ketentuan OJK mengenai prinsip mengenal nasabah, proses permohonan pembelian produk asuransi FWD LooP membutuhkan tatap muka dengan agen kami. Bebas pilih lokasi ketemuan sesuai dengan keinginan kamu .
+                        </n:p>
+                        <n:p>
+                            <textbox class="form-control" width="50%" rows="2" placeholder="Lokasi ketemuan"/>
+                        </n:p>
+                        <n:p>
+                            <textbox placeholder="Keterangan tambahan" class="form-control" width="50%" rows="2" />
+                        </n:p>
+                        <n:p>
+                            <datebox format="medium" onCreate="self.value = new Date()" width="50%"/>
+                        </n:p>
+                        <n:p>
+                            <timebox format="short" onCreate="self.value = new Date()" width="50%"/>
+                        </n:p>
+                        <n:p>
+                            <textbox placeholder="Email" width="50%"/>
+                        </n:p>
+                        <n:p>
+                            <textbox placeholder="Telepon" width="50%"/>
+                        </n:p>
+                    </cell>
+                    <n:p>
+                        <a class="btn btn-success btn-lg" onClick="@command('buttonStep6')">
+                            Lanjut
+                        </a>
+                    </n:p>
+                </div>
+            </panelchildren>
+        </panel>
+    </window>
+</zk>
