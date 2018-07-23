@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
-<?page title="FWD"?>
+
 <zk xmlns:w="client" xmlns:n="native" style="background-color: floralwhite;">
     <window apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
@@ -38,6 +37,5 @@
         </div>
         <image id="image-1" src="images/home-1.PNG" />
         <image id="image-2" src="images/home-2.PNG" />
-        <image id="image-3" src="images/home-3.PNG" />
     </window>
 </zk>

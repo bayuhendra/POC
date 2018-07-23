@@ -286,6 +286,22 @@ public class QuestionVM {
         CommonViewModel.navigateToWithoutDetach("/customer-feedback-experience/setup-question/add-question.zul", window, params);
     }
 
+    @Command("buttonStep4")
+    @NotifyChange("questionDTO")
+    public void buttonStep4(@BindingParam("object") QuestionDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("questionDTO", obj);
+        CommonViewModel.navigateToWithoutDetach("/dashboard1/step4.zul", window, params);
+    }
+
+    @Command("buttonStep6")
+    @NotifyChange("questionDTO")
+    public void buttonStep6(@BindingParam("object") QuestionDTO obj, @ContextParam(ContextType.VIEW) Window window) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("questionDTO", obj);
+        CommonViewModel.navigateToWithoutDetach("/dashboard1/step7.zul", window, params);
+    }
+
     @Command("buttonAddAnswer")
     @NotifyChange("questionDTO")
     public void buttonAddAnswer(@BindingParam("object") AnswerDTO obj, @ContextParam(ContextType.VIEW) Window window) {

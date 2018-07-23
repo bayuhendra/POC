@@ -2,34 +2,12 @@
     <window apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
             form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')"
-            width="80%" height="97%" closable="true" sizable="true"
-            title="Feedback">
+            width="60%" height="97%" closable="true" sizable="true" title="Feedback">
+        <image id="image-8" src="images/download.jpg" />
         <separator></separator>
         <label style="color:#022c2f;font-size:15px;font-weight: bold;align:center" value="Survei Kepuasan Pelanggan"/>
         <separator></separator>
         <div height="5px" />
-        <groupbox>
-            <grid style="border:0">
-                <columns>
-                    <column width="15%"></column>
-                    <column width="30%"></column>
-                    <column width="20%"></column>
-                    <column width="35%"></column>
-                </columns>
-                <rows>
-                    <row>  
-                        <n:h5 class="modal-title"> Nama</n:h5>
-                        <textbox class="form-control" width="100%" value="@bind(fx.nama)"/>    
-                    </row>
-                    <row>
-                        <n:h5 class="modal-title"> Email</n:h5>
-                        <textbox class="form-control" width="100%" value="@bind(fx.email)"/>       
-                    </row>
-                
-                </rows>
-                       
-            </grid>
-        </groupbox>
         <listbox rows="1" mold="paging" pageSize="1" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.answerType1DTOs)">
             <listhead>
                 <listheader label="" width="100%" align="left"/>

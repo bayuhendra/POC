@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
+<?page title="FWD"?>
+<zk xmlns:w="client" xmlns:n="native" style="background-color: floralwhite;">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
+            form="@id('fx') @load(vm.resultAnswerDTO) @save(vm.resultAnswerDTO, before='buttonSaveFeedback1')">
+        <image id="image" src="images/step5.PNG" align="center"/>
+        <separator></separator>
+        <radiogroup id="sv1" onCheck="choice1.value = self.selectedItem.label" />
+        <vbox width="100%" height="100%" align="center">
+            <grid style="border:0">
+                <columns>
+                    <column align="right" width="50%"/>
+                    <column align="left" width="50%"/>
+                </columns>
+                <rows>
+                    <row >
+                        <textbox placeholder="Nama lengkap sesuai KTP" width="50%"/>
+                        <datebox format="medium" onCreate="self.value = new Date()" width="50%"/>
+                    </row>
+                    <row>
+                        <combobox id="JenisKelamin" placeholder="Jenis kelamin" width="50%">
+                            <comboitem label="Pria" value="1"></comboitem>
+                            <comboitem label="Wanita" value="2"></comboitem>
+                        </combobox>
+                        <textbox placeholder="Kode promo jika ada" width="50%"/>
+                    </row>
+                </rows>
+            </grid>
+        </vbox>
+        <vbox width="100%" height="100%" align="center">
+            <grid style="border:0">
+                <columns>
+                    <column align="right" width="35%"/>
+                    <column align="left" width="20%"/>
+                    <column align="right" width="35%"/>
+                    <column align="left" width="20%"/>
+                </columns>
+                <rows>
+                    <row>
+                        <radio id="ra1" label="Untuk saya" radiogroup="sv1" />
+                        <radio id="ra2" label="Untuk keluarga" radiogroup="sv1" />
+                    </row>
+                </rows>
+            </grid>
+        </vbox>
+        <vbox width="80%" height="100%" align="right">
+            <button label="Lanjut" style="background-color: #022c2f;color:white" width="200px" onClick='execution.sendRedirect("http://localhost:9091/crm/dashboard1/step6.zul")'></button>
+        </vbox>
+        <separator></separator>      
+        <separator></separator>      
+        <separator></separator>
+        <image id="image-8" src="images/Step5-1.PNG" />
+    </window>
+</zk>

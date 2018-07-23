@@ -28,7 +28,7 @@
                 <listheader label="Touchpoints" width="10%" align="center"/>
                 <listheader label="Status" width="7%" align="center"/>
                 <listheader label="Question" width="60%" align="center"/>
-                <listheader label="Aksi" width="10%" align="center"/>
+                <listheader label="Aksi" width="15%" align="center"/>
             </listhead>
             <template name="model">
                 <listitem value="${each}">
@@ -47,6 +47,7 @@
                     <listcell >
                         <a onClick="@command('detail', object=each)" image="/images/skk_edit.png" sclass="btn btn-default"/>
                         <a onClick="@command('delete', object=each)" image="/images/clear_x.png" sclass="btn btn-default"/>
+                        <a onClick="@command('detailPertanyaan', object=each)" image="/images/skk_finish.png" sclass="btn btn-default"/>
                     </listcell>
                 </listitem>
             </template>
