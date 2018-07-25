@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.agit.crm.main.viewmodel.customer.feedback;
 
 import com.agit.crm.common.application.AnswerService;
 import com.agit.crm.common.application.QuestionService;
 import com.agit.crm.common.application.ResultAnswerService;
+import com.agit.crm.common.application.TouchpointService;
 import com.agit.crm.common.dto.customer.feedback.AnswerDTO;
 import com.agit.crm.common.dto.customer.feedback.AnswerDTOBuilder;
 import com.agit.crm.common.dto.customer.feedback.QuestionDTO;
 import com.agit.crm.common.dto.customer.feedback.QuestionDTOBuilder;
 import com.agit.crm.common.dto.customer.feedback.ResultAnswerDTO;
 import com.agit.crm.common.dto.customer.feedback.ResultAnswerDTOBuilder;
+import com.agit.crm.common.dto.customer.touchpoint.TouchpointDTO;
 import com.agit.crm.common.dto.usermanagement.UserDTO;
 import com.agit.crm.common.security.SecurityUtil;
 import com.agit.crm.shared.status.Status;
@@ -84,10 +81,7 @@ public class QuestionVM {
     private List<AnswerDTO> answerType2DTOs = new ArrayList<>();
 
     private List<String> listQuestion = new ArrayList<String>();
-    private List<String> listQuestionFeedback = new ArrayList<String>();
-    private ListModelList<Status> statuses = new ListModelList<>();
     private ListModelList<TypeTouchpoints> touchpointses = new ListModelList<>();
-    private ListModelList<String> choiceAnswer = new ListModelList<>();
 
     private List<UserDTO> userDTOs = new ArrayList<>();
     private UserDTO userDTO = new UserDTO();
@@ -98,11 +92,6 @@ public class QuestionVM {
     private UserDTO user;
 
     private String questionID;
-    private String idChooseAnswer1;
-    private String idChooseAnswer2;
-    private String idChooseAnswer3;
-    private String idChooseAnswer4;
-    private String idChooseAnswer5;
     private String answerID;
     private String userID;
     private Status status;
@@ -494,14 +483,6 @@ public class QuestionVM {
 
     }
 
-    public QuestionService getQuestionService() {
-        return questionService;
-    }
-
-    public void setQuestionService(QuestionService questionService) {
-        this.questionService = questionService;
-    }
-
     public QuestionDTO getQuestionDTO() {
         return questionDTO;
     }
@@ -516,14 +497,6 @@ public class QuestionVM {
 
     public void setQuestionDTOs(List<QuestionDTO> questionDTOs) {
         this.questionDTOs = questionDTOs;
-    }
-
-    public ListModelList<Status> getStatuses() {
-        return new ListModelList<>(Status.values());
-    }
-
-    public void setStatuses(ListModelList<Status> statuses) {
-        this.statuses = statuses;
     }
 
     public ListModelList<TypeTouchpoints> getTouchpointses() {
@@ -574,14 +547,6 @@ public class QuestionVM {
         this.listQuestion = listQuestion;
     }
 
-    public ListModelList<String> getChoiceAnswer() {
-        return choiceAnswer;
-    }
-
-    public void setChoiceAnswer(ListModelList<String> choiceAnswer) {
-        this.choiceAnswer = choiceAnswer;
-    }
-
     public List<QuestionDTO> getQuestionDTOsType1() {
         return questionDTOsType1;
     }
@@ -596,14 +561,6 @@ public class QuestionVM {
 
     public void setQuestionDTOsType2(List<QuestionDTO> questionDTOsType2) {
         this.questionDTOsType2 = questionDTOsType2;
-    }
-
-    public AnswerService getAnswerService() {
-        return answerService;
-    }
-
-    public void setAnswerService(AnswerService answerService) {
-        this.answerService = answerService;
     }
 
     public AnswerDTO getAnswerDTO() {
@@ -630,60 +587,12 @@ public class QuestionVM {
         this.answerID = answerID;
     }
 
-    public List<String> getListQuestionFeedback() {
-        return listQuestionFeedback;
-    }
-
-    public void setListQuestionFeedback(List<String> listQuestionFeedback) {
-        this.listQuestionFeedback = listQuestionFeedback;
-    }
-
     public String getUserID() {
         return userID;
     }
 
     public void setUserID(String userID) {
         this.userID = userID;
-    }
-
-    public String getIdChooseAnswer1() {
-        return idChooseAnswer1;
-    }
-
-    public void setIdChooseAnswer1(String idChooseAnswer1) {
-        this.idChooseAnswer1 = idChooseAnswer1;
-    }
-
-    public String getIdChooseAnswer2() {
-        return idChooseAnswer2;
-    }
-
-    public void setIdChooseAnswer2(String idChooseAnswer2) {
-        this.idChooseAnswer2 = idChooseAnswer2;
-    }
-
-    public String getIdChooseAnswer3() {
-        return idChooseAnswer3;
-    }
-
-    public void setIdChooseAnswer3(String idChooseAnswer3) {
-        this.idChooseAnswer3 = idChooseAnswer3;
-    }
-
-    public String getIdChooseAnswer4() {
-        return idChooseAnswer4;
-    }
-
-    public void setIdChooseAnswer4(String idChooseAnswer4) {
-        this.idChooseAnswer4 = idChooseAnswer4;
-    }
-
-    public String getIdChooseAnswer5() {
-        return idChooseAnswer5;
-    }
-
-    public void setIdChooseAnswer5(String idChooseAnswer5) {
-        this.idChooseAnswer5 = idChooseAnswer5;
     }
 
     public List<AnswerDTO> getAnswerType1DTOs() {
@@ -700,14 +609,6 @@ public class QuestionVM {
 
     public void setAnswerType2DTOs(List<AnswerDTO> answerType2DTOs) {
         this.answerType2DTOs = answerType2DTOs;
-    }
-
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
     }
 
     public List<UserDTO> getUserDTOs() {
@@ -732,14 +633,6 @@ public class QuestionVM {
 
     public void setResultAnswerDTO(ResultAnswerDTO resultAnswerDTO) {
         this.resultAnswerDTO = resultAnswerDTO;
-    }
-
-    public ResultAnswerService getResultAnswerService() {
-        return resultAnswerService;
-    }
-
-    public void setResultAnswerService(ResultAnswerService resultAnswerService) {
-        this.resultAnswerService = resultAnswerService;
     }
 
     public String getResultAnswerID() {

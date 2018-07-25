@@ -57,20 +57,21 @@
                         </row>
                     </rows>
                 </grid>
-                <div class="modal-footer">
-                </div>
-                <!--<separator spacing="20px" bar="true"/>-->
-                <div class="btn-group btn-group-justified">
-                    <hbox align="center">
-                        <space width="195px"/>
-                        <vbox>
-                            <button label="Register" style="background-color: #022c2f;color:white" width="90px"/>
-                        </vbox>
-                        <vbox>
-                            <button type="submit" label="Login" style="background-color: #022c2f;color:white" width="90px"/>
-                        </vbox>
-                    </hbox>
-                </div>
+                <separator></separator>
+                <separator></separator>
+                <separator bar="true" />
+                <vbox width="100%" height="100%" align="right">
+                    <grid style="border:0">
+                        <columns>
+                            <column align="right" width="40%"/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <button type="submit" label="Login" style="background-color: #022c2f;color:white" width="90px"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </vbox>
             </groupbox>
         </h:form>
         <!-- this form-login-page form is also used as the form-error-page to ask for a login again. -->

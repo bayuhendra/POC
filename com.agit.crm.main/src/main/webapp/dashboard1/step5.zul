@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?link rel="icon" type="image/png" href="/images/logoagit-new.png"?>
-<?page title="FWD"?>
+<?page id="index" title="FWD Asuransi Hidup"?>
+<?link rel="icon" type="image/png" href="/images/lowongan-kerja-pt-fwd-life-indonesia.jpg"?>
 <zk xmlns:w="client" xmlns:n="native" style="background-color: floralwhite;">
     <window apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('com.agit.crm.main.viewmodel.customer.feedback.QuestionVM')"
